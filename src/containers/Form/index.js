@@ -16,6 +16,8 @@ const Form = ({ onSuccess, onError }) => {
       try {
         await mockContactApi();
         setSending(false);
+        // Ajouté onSuccess(true)
+        onSuccess(true);
       } catch (err) {
         setSending(false);
         onError(err);
@@ -30,9 +32,11 @@ const Form = ({ onSuccess, onError }) => {
           <Field placeholder="" label="Nom" />
           <Field placeholder="" label="Prénom" />
           <Select
-            selection={["Personel", "Entreprise"]}
+            // Corrigé typo 'Personel'
+            selection={["Personnel", "Entreprise"]}
             onChange={() => null}
-            label="Personel / Entreprise"
+            // Corrigé typo 'Personel'
+            label="Personnel / Entreprise"
             type="large"
             titleEmpty
           />

@@ -7,7 +7,8 @@ describe("When Events is created", () => {
     await screen.findByText("Email");
     await screen.findByText("Nom");
     await screen.findByText("Prénom");
-    await screen.findByText("Personel / Entreprise");
+    // Corrigé typo 'Personel'
+    await screen.findByText("Personnel / Entreprise");
   });
 
   describe("and a click is triggered on the submit button", () => {
