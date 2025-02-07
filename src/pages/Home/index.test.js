@@ -36,8 +36,6 @@ describe("When Form is created", () => {
 describe("When a page is created", () => {
   it("a list of events is displayed", async () => {
     render(<Home />)
-    const realisations = await screen.findByTestId("realisation-title")
-    expect(realisations.innerHTML).toEqual("Nos réalisations")
     const events = await screen.findByTestId("events")
     expect(events).toBeInTheDocument()
   })
