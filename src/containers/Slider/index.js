@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { useData } from "../../contexts/DataContext";
-import { getMonth } from "../../helpers/Date";
+import { useEffect, useState } from "react"
+import { useData } from "../../contexts/DataContext"
+import { getMonth } from "../../helpers/Date"
 
-import "./style.scss";
+import "./style.scss"
 
 const Slider = () => {
   const { data } = useData();
@@ -15,10 +15,10 @@ const Slider = () => {
     const interval = setInterval(() => {
       setIndex((prevIndex) =>
         prevIndex < byDateDesc.length - 1 ? prevIndex + 1 : 0
-      );
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [byDateDesc]);
+      )
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [byDateDesc])
 
   return (
     <div className="SlideCardList">
@@ -54,7 +54,7 @@ const Slider = () => {
         </>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Slider;
+export default Slider
