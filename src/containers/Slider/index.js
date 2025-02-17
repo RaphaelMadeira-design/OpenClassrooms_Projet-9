@@ -9,16 +9,15 @@ const Slider = () => {
   const [index, setIndex] = useState(0);
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
     new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
-  );
+  )
   
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prevIndex) =>
-        prevIndex < byDateDesc.length - 1 ? prevIndex + 1 : 0
-      )
+      setIndex((prevIndex) => (prevIndex + 1) % byDateDesc.length)
     }, 5000)
+  
     return () => clearInterval(interval)
-  }, [byDateDesc])
+  })
 
   return (
     <div className="SlideCardList">
