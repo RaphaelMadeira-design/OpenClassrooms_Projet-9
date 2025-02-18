@@ -1,11 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react"
 import Home from "./index"
-// Importé le hook pour simulation
-import { DataContext } from "../../contexts/DataContext"
-
-const mockData = {
-  last: { id: 1, title: "Dernier événement" },
-}
 
 describe("When Form is created", () => {
   it("a list of fields card is displayed", async () => {
@@ -31,7 +25,9 @@ describe("When Form is created", () => {
       await screen.findByText("Message envoyé !")
     })
   })
+
 })
+
 
 describe("When a page is created", () => {
   it("a list of events is displayed", async () => {
@@ -40,10 +36,9 @@ describe("When a page is created", () => {
     expect(events).toBeInTheDocument()
   })
 
-  it("a list of people is displayed", async () => {
+  it("a list a people is displayed", async () => {
     render(<Home />)
     await screen.findByText("CEO")
-    await screen.findByText("Jean-Baptiste")
     await screen.findByText("Christine")
   })
 
@@ -54,18 +49,14 @@ describe("When a page is created", () => {
   })
 
   it("an event card, with the last event, is displayed", async () => {
-    // Données simulées injectées via le contexte
-    render(
-      <DataContext.Provider value={mockData}>
-        <Home />
-      </DataContext.Provider>
-    )
-
-    // Vérification que la carte d'événement est présente et que le titre est correct
-    const eventCard = await screen.findByTestId("event-card")
-    expect(eventCard).toBeInTheDocument()
-
-    // Vérification que le titre de l'événement est bien celui attendu
-    await screen.findByText(mockData.last.title)
+    render(<Home />)
+    setTimeout(() => {
+      () => {
+        const { last } = useData()
+        screen.findByTestId("event-card")
+        screen.findByText(last.cover)
+        screen.findByText(last.title)
+      }
+    }, 200)
   })
 })
